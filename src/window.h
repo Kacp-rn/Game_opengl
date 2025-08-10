@@ -16,9 +16,13 @@ class Window
     Window(std::string w_title, int w_width, int w_height);
     ~Window();
     bool init();
-    void create();
+    bool create();
     void pollEvents();
     bool ShouldClose();
     void swapBuffers();//for now empty;
+    void update();
+    int getWidth(){return width;}
+    int getHeight(){return height;}
+    GLFWwindow* getGLFWWindow(){return window;}
 
 };

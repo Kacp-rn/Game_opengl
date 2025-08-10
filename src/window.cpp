@@ -7,24 +7,62 @@ Window::Window(std::string w_title, int w_width, int w_height)
     height = w_height;
 }
 
+Window::~Window()
+{
+    glfwDestroyWindow(window);
+    glfwTerminate();
+}
+
 bool Window::init()
 {
     if(!glfwInit())
     {
         std::cerr<<"Failed to initialize GLFW/GLAD"<<std::endl;
+        return false;
     }
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    return true;
 }
 
-void Window::create()
+bool Window::create()
 {
     window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
-    if(window = nullptr)
+    if(window == nullptr)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
+        return false;
     }
     glfwMakeContextCurrent(window);
+
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        std::cout << "Failed to initialize GLAD" << std::endl;
+        return -1;
+    }
+
+    return true;
+}
+
+void Window::swapBuffers()
+{
+    glfwSwapBuffers(window);//TODO:make it run;
+}
+
+bool Window::ShouldClose()
+{
+    return glfwWindowShouldClose(window);
+}
+
+void Window::pollEvents()
+{
+    glfwPollEvents();
+}
+
+void Window::update()
+{
+    glClearColor(0.1f, 0.6f, 0.25f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
