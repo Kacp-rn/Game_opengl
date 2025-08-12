@@ -10,8 +10,8 @@
 class Shader
 {
     private:
-    GLuint VAO;
-    GLuint VBO;
+    GLuint VertexShader;
+    GLuint FragmentShader;
     GLuint Program_ID;
 
     std::string frag_Path;
@@ -20,8 +20,7 @@ class Shader
     public:
     Shader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
     ~Shader();
-    void loadShader(const std::string& Path, GLuint ShaderID);
-    void compileShader(GLuint ShaderID);
+    void compileShader();
     void createProgram();
     void use();
 
