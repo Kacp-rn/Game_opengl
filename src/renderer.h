@@ -2,6 +2,14 @@
 
 #include "shader.h"
 #include "window.h"
+#include<vector>
+
+struct Vertex 
+{
+    GLfloat x;
+    GLfloat y;
+    GLfloat z;
+};
 
 
 class Renderer
@@ -16,8 +24,11 @@ class Renderer
 
     GLuint VAO;
     GLuint VBO;
+    GLfloat* vertices;
     
     void setupBuffers();
+
+    GLfloat* genVertices();
 
     public:
     Renderer(Window& window, int c_rows, int cols);
