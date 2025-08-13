@@ -6,7 +6,7 @@ int main()
 {
     Window window("Game", 800, 600);
     Renderer renderer(window, 18, 32);
-
+    window.init();
     renderer.init();
     window.create();
 
