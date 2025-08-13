@@ -10,8 +10,8 @@
 class Shader
 {
     private:
-    GLuint VertexShader;
-    GLuint FragmentShader;
+    uint VertexShader;
+    uint FragmentShader;
     GLuint Program_ID;
 
     std::string frag_Path;
