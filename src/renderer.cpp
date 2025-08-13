@@ -32,7 +32,7 @@ void Renderer::setupBuffers()
     delete[] vertices;
 }
 
-void Renderer::init()
+bool Renderer::init()
 {
     window.init();
     shader.compileShader();
@@ -40,6 +40,8 @@ void Renderer::init()
     glEnable(GL_DEPTH_TEST);
 
     setupBuffers();
+
+    return true;
 }
 
 GLfloat* Renderer::genVertices()

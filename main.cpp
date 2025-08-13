@@ -7,11 +7,8 @@ int main()
     Window window("Game", 800, 600);
     Renderer renderer(window, 18, 32);
 
-    if(!window.init() || !window.create())
-    {
-        std::cerr << "Failed to create window" << std::endl;
-        return -1;
-    }
+    renderer.init();
+    window.create();
 
     while (!window.ShouldClose())
     {

@@ -32,8 +32,8 @@ class Renderer
 
     public:
     Renderer(Window& window, int c_rows, int cols);
-    ~Renderer();
+    ~Renderer(){}
 
-    void init();
+   bool init();
     void render();
 };
