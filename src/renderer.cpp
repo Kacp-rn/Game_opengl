@@ -11,7 +11,20 @@ Renderer::Renderer(Window& window, int c_rows, int cols)
     init();
 }
 
+void Renderer::setupBuffers()
+{
+    glGenVertexArrays(1, &VAO);
+    glBindVertexArray(VAO);
+
+    
+}
+
 void Renderer::init()
 {
+    window.init();
+    shader.compileShader();
+    shader.createProgram();
+    glEnable(GL_DEPTH_TEST);
 
+    setupBuffers();
 }

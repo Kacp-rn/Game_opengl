@@ -28,6 +28,8 @@ bool Window::init()
 
 bool Window::create()
 {
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    
     window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
     if(window == nullptr)
     {
@@ -48,7 +50,7 @@ bool Window::create()
 
 void Window::swapBuffers()
 {
-    glfwSwapBuffers(window);//TODO:make it run;
+    glfwSwapBuffers(window);
 }
 
 bool Window::ShouldClose()

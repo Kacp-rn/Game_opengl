@@ -19,7 +19,7 @@ class Window
     bool create();
     void pollEvents();
     bool ShouldClose();
-    void swapBuffers();//for now empty;
+    void swapBuffers();
     void update();
     int getWidth(){return width;}
     int getHeight(){return height;}
