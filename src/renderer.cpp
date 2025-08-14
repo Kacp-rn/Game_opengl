@@ -8,8 +8,6 @@ Renderer::Renderer(Window& window, int c_rows, int cols)
 {
     vertices = genVertices();
     cell_size = 40;
-
-    init();
 }
 
 void Renderer::setupBuffers()
@@ -34,7 +32,6 @@ void Renderer::setupBuffers()
 
 bool Renderer::init()
 {
-    window.init();
     shader.compileShader();
     shader.createProgram();
     glEnable(GL_DEPTH_TEST);
@@ -66,7 +63,7 @@ GLfloat* Renderer::genVertices()
         }
     }
 
-    return vertices;
+     return vertices;
 }
 
 void Renderer::render()

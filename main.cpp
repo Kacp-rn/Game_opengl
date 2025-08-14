@@ -1,14 +1,19 @@
-#include"src/renderer.h"
-#include"src/window.h"
 #include"src/shader.h"
-
+#include"src/window.h"
+#include"src/renderer.h"
 int main()
 {
     Window window("Game", 800, 600);
-    Renderer renderer(window, 18, 32);
+    Shader shader("src/shaders/vertex.glsl", "src/shaders/fragment.glsl");
     window.init();
-    renderer.init();
+    Renderer renderer(window, 18, 32);
     window.create();
+    
+    renderer.init();
+    
+    // shader.compileShader();
+    // shader.createProgram();
+    //shader.use();
 
     while (!window.ShouldClose())
     {
@@ -19,6 +24,7 @@ int main()
         window.update();
 
         // Renderowanie sceny
+        
         renderer.render();
 
         // Zamiana buforów

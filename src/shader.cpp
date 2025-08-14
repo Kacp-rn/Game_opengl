@@ -35,6 +35,8 @@ void Shader::compileShader()
     FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(FragmentShader, 1, &Frag_Shader, nullptr);
     glCompileShader(FragmentShader);
+
+    
 }
 
 void Shader::createProgram()
