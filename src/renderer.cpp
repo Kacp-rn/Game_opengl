@@ -1,13 +1,13 @@
 #include "renderer.h"
 
 Renderer::Renderer(Window& window, int c_rows, int cols)
-: shader("/home/kacp_r/Dokumenty/Game/src/shaders/vertex.glsl", "/home/kacp_r/Dokumenty/Game/src/shaders/fragment.glsl"),
+: shader("src/shaders/vertex.glsl", "src/shaders/fragment.glsl"),
       window(window),
       rows(c_rows),
       columns(cols)
 {
     vertices = genVertices();
-    cell_size = 40;
+    cell_size = 0.0625;
 }
 
 void Renderer::setupBuffers()
@@ -43,22 +43,23 @@ bool Renderer::init()
 
 GLfloat* Renderer::genVertices()
 {
-    unsigned int width = window.getWidth();
-    unsigned int height = window.getHeight();
-    float cellSize = 40.0f; // Przykładowa wartość, musisz ją dostosować do swoich potrzeb
-
+    // unsigned int width = window.getWidth();
+    // unsigned int height = window.getHeight();
+    
     // Obliczenie liczby wierzchołków
-    unsigned int numVertices = (width + 1) * (height + 1);
+    unsigned int numVertices = (columns + 1) * (rows + 1);
 
     // Tworzenie dynamicznej tablicy dla wierzchołków
     GLfloat* vertices = new GLfloat[numVertices * 3];
 
     // Generowanie siatki kwadratów
-    for (unsigned int y = 0; y <= height; ++y) {
-        for (unsigned int x = 0; x <= width; ++x) {
-            unsigned int index = (y * (width + 1) + x) * 3;
-            vertices[index] = x * cellSize;
-            vertices[index + 1] = y * cellSize;
+    for (unsigned int y = 0; y <= rows; ++y) 
+    {
+        for (unsigned int x = 0; x <= columns; ++x) 
+        {
+            unsigned int index = (y * (columns + 1) + x) * 3;
+            vertices[index] = (x * cell_size)-columns;
+            vertices[index + 1] = rows - (y * cell_size);
             vertices[index + 2] = 0.0f; // Wszystkie wierzchołki mają z = 0
         }
     }
