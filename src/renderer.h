@@ -24,8 +24,6 @@ class Renderer
 
     GLuint VAO;
     GLuint VBO;
-    float* vertices; 
-
     
     void setupBuffers();
 

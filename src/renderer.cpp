@@ -6,24 +6,16 @@ Renderer::Renderer(Window& window, int c_rows, int cols)
       rows(c_rows),
       columns(cols)
 {
-    make_vertices();
     cell_size = 0.065;
-}
-
-float Renderer::make_vertices()
-{
-    float c_vertices[] = {
-        -0.5f, -0.5f, 0.0f, // left  
-         0.5f, -0.5f, 0.0f, // right 
-         0.0f,  0.5f, 0.0f  // top   
-    }; 
-
-    vertices = c_vertices;
-    return* vertices;
 }
 
 void Renderer::setupBuffers()
 {
+
+float vertices[] = {-0.5f, -0.5f, 0.0f, // left  
+         0.5f, -0.5f, 0.0f, // right 
+         0.0f,  0.5f, 0.0f  // top  
+         }; 
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
 
@@ -39,7 +31,7 @@ void Renderer::setupBuffers()
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
-    delete[] vertices;
+    //delete[] vertices;
 }
 
 bool Renderer::init()
@@ -66,7 +58,7 @@ void Renderer::render()
     // Renderujemy siatkę kwadratów za pomocą funkcji glDrawArrays
     // GL_LINES - oznacza, że będziemy rysować linie między wierzchołkami
     // W naszym przypadku każdy kwadrat składa się z 4 lini (linia od A do B, B do C, C do D, D do A)
-    glDrawArrays(GL_LINES, 0, rows * columns * 4);
+    glDrawArrays(GL_TRIANGLES, 0, 3);
 
     // Odbindowujemy VAO
     glBindVertexArray(0);
