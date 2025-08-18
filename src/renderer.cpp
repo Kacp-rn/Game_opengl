@@ -6,8 +6,20 @@ Renderer::Renderer(Window& window, int c_rows, int cols)
       rows(c_rows),
       columns(cols)
 {
-    vertices = genVertices();
-    cell_size = 0.0625;
+    make_vertices();
+    cell_size = 0.065;
+}
+
+float Renderer::make_vertices()
+{
+    float c_vertices[] = {
+        -0.5f, -0.5f, 0.0f, // left  
+         0.5f, -0.5f, 0.0f, // right 
+         0.0f,  0.5f, 0.0f  // top   
+    }; 
+
+    vertices = c_vertices;
+    return* vertices;
 }
 
 void Renderer::setupBuffers()
@@ -20,7 +32,7 @@ void Renderer::setupBuffers()
 
     unsigned int size = window.getWidth() * window.getHeight() * 3 * sizeof(float);
 
-    glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     glVertexAttribPointer(0,3,GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
@@ -41,31 +53,7 @@ bool Renderer::init()
     return true;
 }
 
-GLfloat* Renderer::genVertices()
-{
-    // unsigned int width = window.getWidth();
-    // unsigned int height = window.getHeight();
-    
-    // Obliczenie liczby wierzchołków
-    unsigned int numVertices = (columns + 1) * (rows + 1);
 
-    // Tworzenie dynamicznej tablicy dla wierzchołków
-    GLfloat* vertices = new GLfloat[numVertices * 3];
-
-    // Generowanie siatki kwadratów
-    for (unsigned int y = 0; y <= rows; ++y) 
-    {
-        for (unsigned int x = 0; x <= columns; ++x) 
-        {
-            unsigned int index = (y * (columns + 1) + x) * 3;
-            vertices[index] = (x * cell_size)-columns;
-            vertices[index + 1] = rows - (y * cell_size);
-            vertices[index + 2] = 0.0f; // Wszystkie wierzchołki mają z = 0
-        }
-    }
-
-     return vertices;
-}
 
 void Renderer::render()
 {

@@ -24,7 +24,8 @@ class Renderer
 
     GLuint VAO;
     GLuint VBO;
-    GLfloat* vertices;
+    float* vertices; 
+
     
     void setupBuffers();
 
@@ -33,7 +34,8 @@ class Renderer
     public:
     Renderer(Window& window, int c_rows, int cols);
     ~Renderer(){}
+    float make_vertices();
 
-   bool init();
+    bool init();
     void render();
 };
