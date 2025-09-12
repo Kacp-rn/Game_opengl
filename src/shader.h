@@ -23,6 +23,7 @@ class Shader
     void compileShader();
     void createProgram();
     void use();
+    void set_color(float r, float g, float b);
 
     GLuint getProgramID() const;
 };

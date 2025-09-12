@@ -6,7 +6,7 @@ int main()
     Window window("Game", 800, 600);
     Shader shader("src/shaders/vertex.glsl", "src/shaders/fragment.glsl");
     window.init();
-    Renderer renderer(window, 18, 32);
+    Renderer renderer;
     window.create();
     
     renderer.init();

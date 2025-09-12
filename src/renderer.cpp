@@ -1,14 +1,5 @@
 #include "renderer.h"
 
-Renderer::Renderer(Window& window, int c_rows, int cols)
-: shader("src/shaders/vertex.glsl", "src/shaders/fragment.glsl"),
-      window(window),
-      rows(c_rows),
-      columns(cols)
-{
-    cell_size = 0.065;
-}
-
 void Renderer::setupBuffers()
 {
 
@@ -22,8 +13,7 @@ float vertices[] = {-0.5f, -0.5f, 0.0f, // left
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    unsigned int size = window.getWidth() * window.getHeight() * 3 * sizeof(float);
-
+    
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     glVertexAttribPointer(0,3,GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
@@ -36,6 +26,7 @@ float vertices[] = {-0.5f, -0.5f, 0.0f, // left
 
 bool Renderer::init()
 {
+    Shader shader("/home/kacp_r/Dokumenty/Game/src/shaders/vertex.glsl", "/home/kacp_r/Dokumenty/Game/src/shaders/fragment.glsl");
     shader.compileShader();
     shader.createProgram();
     glEnable(GL_DEPTH_TEST);
@@ -53,6 +44,7 @@ void Renderer::render()
     shader.use();
 
     // Powiązujemy VAO, który zawiera nasze wierzchołki
+    
     glBindVertexArray(VAO);
 
     // Renderujemy siatkę kwadratów za pomocą funkcji glDrawArrays
