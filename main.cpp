@@ -9,11 +9,11 @@ int main()
     Renderer renderer;
     window.create();
     
-    renderer.init();
+   renderer.init();
     
-    // shader.compileShader();
-    // shader.createProgram();
-    //shader.use();
+    shader.compileShader("/home/kacp_r/Dokumenty/Game/src/shaders/vertex.glsl", "/home/kacp_r/Dokumenty/Game/src/shaders/fragment.glsl");
+    shader.createProgram();
+    shader.use();
 
     while (!window.ShouldClose())
     {

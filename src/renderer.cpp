@@ -29,7 +29,6 @@ bool Renderer::init()
     
     shader.compileShader("/home/kacp_r/Dokumenty/Game/src/shaders/vertex.glsl", "/home/kacp_r/Dokumenty/Game/src/shaders/fragment.glsl");
     shader.createProgram();
-    glEnable(GL_DEPTH_TEST);
 
     setupBuffers();
 
