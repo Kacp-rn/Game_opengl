@@ -1,13 +1,10 @@
 #include "shader.h"
 
-Shader::Shader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath)
+void Shader::compileShader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath)
 {
     vert_Path = vertexShaderPath;
     frag_Path = fragmentShaderPath;
-}
-
-void Shader::compileShader()
-{
+    
     std::ifstream vertex(vert_Path);
     std::ifstream fragment(frag_Path);
 

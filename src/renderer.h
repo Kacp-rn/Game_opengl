@@ -14,7 +14,6 @@ class Renderer
     void setupBuffers();    
 
     public:
-    Renderer();
     bool init();
     void render();
 };

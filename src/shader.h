@@ -18,12 +18,11 @@ class Shader
     std::string vert_Path;
 
     public:
-    Shader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
     ~Shader();
-    void compileShader();
+    void compileShader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
     void createProgram();
     void use();
-    void set_color(float r, float g, float b);
+    //void set_color(float r, float g, float b);
 
     GLuint getProgramID() const;
 };

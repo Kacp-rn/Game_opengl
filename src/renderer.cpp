@@ -26,8 +26,8 @@ float vertices[] = {-0.5f, -0.5f, 0.0f, // left
 
 bool Renderer::init()
 {
-    Shader shader("/home/kacp_r/Dokumenty/Game/src/shaders/vertex.glsl", "/home/kacp_r/Dokumenty/Game/src/shaders/fragment.glsl");
-    shader.compileShader();
+    
+    shader.compileShader("/home/kacp_r/Dokumenty/Game/src/shaders/vertex.glsl", "/home/kacp_r/Dokumenty/Game/src/shaders/fragment.glsl");
     shader.createProgram();
     glEnable(GL_DEPTH_TEST);
 
