@@ -22,8 +22,11 @@ void Shader::compileShader(const std::string& vertexShaderPath, const std::strin
     fragment.close();
 
 
-    const char* Vert_Shader = vert_Shader.str().c_str();
-    const char* Frag_Shader = frag_Shader.str().c_str();
+    std::string vertShaderStr = vert_Shader.str();
+    std::string fragShaderStr = frag_Shader.str();
+
+    const char* Vert_Shader = vertShaderStr.c_str();
+    const char* Frag_Shader = fragShaderStr.c_str();
 
     VertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(VertexShader, 1, &Vert_Shader, nullptr);
