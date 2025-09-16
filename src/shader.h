@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <cmath>
 
 class Shader
 {
@@ -22,7 +23,6 @@ class Shader
     void compileShader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
     void createProgram();
     void use();
-    //void set_color(float r, float g, float b);
 
     GLuint getProgramID() const;
 };

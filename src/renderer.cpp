@@ -37,19 +37,19 @@ bool Renderer::init()
 
 void Renderer::render()
 {
-    // Używamy naszego shadera
     shader.use();
-
-    // Powiązujemy VAO, który zawiera nasze wierzchołki
     
     glBindVertexArray(VAO);
-
-    // Renderujemy siatkę kwadratów za pomocą funkcji glDrawArrays
-    // GL_LINES - oznacza, że będziemy rysować linie między wierzchołkami
-    // W naszym przypadku każdy kwadrat składa się z 4 lini (linia od A do B, B do C, C do D, D do A)
+   
     glDrawArrays(GL_TRIANGLES, 0, 3);
 
-    // Odbindowujemy VAO
     glBindVertexArray(0);
 }
 
+// void Renderer::color_change()
+// {
+//     float timeValue = glfwGetTime();
+//     float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
+//     int vertexColorLocation = glGetUniformLocation(shader.getProgramID(), "ourColor");
+//     glUniform4f(vertexColorLocation, 0.7f, greenValue, 0.3f, 1.0f);
+// }

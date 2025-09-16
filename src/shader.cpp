@@ -51,7 +51,11 @@ void Shader::createProgram()
 
 void Shader::use()
 {
+    float timeValue = glfwGetTime();
+    float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
+    int vertexColorLocation = glGetUniformLocation(Program_ID, "ourColor");
     glUseProgram(Program_ID);
+    glUniform4f(vertexColorLocation, 0.7f, greenValue, 0.3f, 1.0f);
 }
 
 Shader::~Shader()

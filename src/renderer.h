@@ -16,4 +16,5 @@ class Renderer
     public:
     bool init();
     void render();
+    //void color_change();
 };
