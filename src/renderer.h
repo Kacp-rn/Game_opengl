@@ -10,11 +10,14 @@ class Renderer
     Shader shader;    
     GLuint VAO;
     GLuint VBO;
+    GLuint EBO;
+    unsigned char *data;
     
     void setupBuffers();    
 
     public:
     bool init();
     void render();
+    void data_setup();
     //void color_change();
 };

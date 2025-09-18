@@ -1,17 +1,22 @@
-#include<GLFW/glfw3.h>
-#include<../glad/glad.h>
-#include<iostream>
-#include<string>
+// #pragma once
 
-class Texture
-{
-    private:
-    void set_texture_vertices();
-    void set_borderColor(float r, float g, float b, float a);
-    public:
-    Texture(const std::string& texture_path);
-    void init();
+// #include"GLFW/glfw3.h"
+// #include"../glad/glad.h"
+// #include<iostream>
+// #include<string>
 
+// #define STB_IMAGE_IMPLEMENTATION
+// #include "../glad/stb_image.h"
 
-};
+// class Texture
+// {
+//     private:
+//     std::string texturePath;
+//     unsigned char data;
+//     public:
+//     Texture(const std::string& texture_path);
+//     void init();
+//     void bind_texture();
+
+// };
 
