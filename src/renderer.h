@@ -2,16 +2,19 @@
 
 #include "shader.h"
 #include "window.h"
+#include <filesystem>
 #include<vector>
 
 class Renderer
 {
     private:
     Shader shader;    
-    GLuint VAO;
-    GLuint VBO;
-    GLuint EBO;
+    GLuint VAO, VBO, EBO;
+    //GLuint VBO;
+    //GLuint EBO;
     unsigned char *data;
+    unsigned int texture;
+    int width, height, nrChannels;
     
     void setupBuffers();    
 
@@ -19,5 +22,5 @@ class Renderer
     bool init();
     void render();
     void data_setup();
-    //void color_change();
+    void text_setup();
 };

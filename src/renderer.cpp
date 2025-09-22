@@ -38,18 +38,18 @@ void Renderer::setupBuffers()
     // texture coord attribute
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
     glEnableVertexAttribArray(2);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+    // NIE USUWAJ VAO, VBO, EBO tutaj!
 }
 
 bool Renderer::init()
 {
-    
     shader.compileShader("/home/kacp_r/Dokumenty/Game/src/shaders/vertex.glsl", "/home/kacp_r/Dokumenty/Game/src/shaders/fragment.glsl");
     shader.createProgram();
 
     setupBuffers();
+    text_setup();
+    data_setup();
 
     return true;
 }
@@ -59,18 +59,38 @@ bool Renderer::init()
 void Renderer::render()
 {
     shader.use();
-    
+    glUniform1i(glGetUniformLocation(shader.getProgramID(), "ourTexture"), 0);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture);
     glBindVertexArray(VAO);
-   
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
     glBindVertexArray(0);
 }
 
-// void Renderer::color_change()
-// {
-//     float timeValue = glfwGetTime();
-//     float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
-//     int vertexColorLocation = glGetUniformLocation(shader.getProgramID(), "ourColor");
-//     glUniform4f(vertexColorLocation, 0.7f, greenValue, 0.3f, 1.0f);
-// }
+void Renderer::text_setup()
+{
+     glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture); // all upcoming GL_TEXTURE_2D operations now have effect on this texture object
+    // set the texture wrapping parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    // set texture filtering parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+}
+
+void Renderer::data_setup()
+{
+    data = stbi_load(std::filesystem::path{"/home/kacp_r/Dokumenty/Game/src/assets/wood.jpg"}.c_str(), &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        GLenum format = (nrChannels == 4) ? GL_RGBA : GL_RGB;
+        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "Failed to load texture" << std::endl;
+    }
+    stbi_image_free(data);
+}

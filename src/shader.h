@@ -2,12 +2,15 @@
 
 #include "../glad/glad.h"
 #include "GLFW/glfw3.h"
-#include <iostream>
+#include <string>
 #include <fstream>
 #include <sstream>
-#include <string>
+#include <iostream>
 #include <cmath>
 #include <stdlib.h>
+
+#define STB_IMAGE_IMPLEMENTATION
+#include "../glad/stb_image.h"
 
 class Shader
 {
