@@ -2,9 +2,9 @@
 
 void Renderer::setupBuffers()
 {
-    float timeValue = glfwGetTime()*(rand()%100);
+    float timeValue = glfwGetTime()*(rand()%360);
     float greenValue = (sin(timeValue)/2.0f) + 0.5f;
-    float redValue = (cos(timeValue) / 2.0f) + 0.5f;
+    float redValue = (sin(timeValue) / 2.0f) + 0.5f;
     float blueValue = (sin(timeValue) / 4.0f) + 0.6f;
 
     float vertices[] = {
