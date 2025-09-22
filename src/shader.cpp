@@ -51,13 +51,16 @@ void Shader::createProgram()
 
 void Shader::use()
 {
-    float timeValue = glfwGetTime();
-    float greenValue = (sin(timeValue)/2.0f) + 0.5f;
-    float redValue = (cos(timeValue) / 2.0f) + 0.5f;
-    float blueValue = (cos(timeValue) / 4.0f) + 0.6f;
-    int vertexColorLocation = glGetUniformLocation(Program_ID, "ourColor");
+    glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    transform = glm::translate(transform, glm::vec3(-0.25f, 0.25f, 0.0f));
+    transform = glm::rotate(transform, (float)glfwGetTime()*5, glm::vec3(0.0f, 0.0f, 1.0f));
+
     glUseProgram(Program_ID);
-    glUniform4f(vertexColorLocation, redValue, greenValue, blueValue, 1.0f);
+    int transformLoc = glGetUniformLocation(Program_ID, "transform");
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+
+    int vertexColorLocation = glGetUniformLocation(Program_ID, "ourColor");
+    glUniform4f(vertexColorLocation, 1.0f, (rand()%360)*glfwGetTime(), 0.0f, 1.0f);
 }
 
 Shader::~Shader()
