@@ -53,7 +53,7 @@ void Shader::use()
 {
     glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     transform = glm::translate(transform, glm::vec3(-0.25f, 0.25f, 0.0f));
-    transform = glm::rotate(transform, (float)glfwGetTime()*5, glm::vec3(0.0f, 0.0f, 1.0f));
+    transform = glm::rotate(transform, (float)glfwGetTime()*2, glm::vec3(0.0f, 0.0f, 1.0f));
 
     glUseProgram(Program_ID);
     int transformLoc = glGetUniformLocation(Program_ID, "transform");

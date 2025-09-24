@@ -9,9 +9,9 @@ void Renderer::setupBuffers()
 
     float vertices[] = {
         // positions         // colors
-         -0.5f, 0.5f, 0.0f,  redValue, 0.0f, 0.0f,   // bottom right
-          0.5f,  0.5f, 0.0f,  0.0f, greenValue, 0.0f,   // bottom left
-          0.0f, -0.5f, 0.0f,  0.0f, 0.0f, blueValue    // top 
+         -0.5f, 0.5f, 0.0f,  1, 0.0f, 0.0f,   // bottom right
+          0.5f,  0.5f, 0.0f,  0.0f, 1, 0.0f,   // bottom left
+          0.0f, -0.5f, 0.0f,  0.0f, 0.0f, 1    // top 
     };  
 
     glGenVertexArrays(1, &VAO);

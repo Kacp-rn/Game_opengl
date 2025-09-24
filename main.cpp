@@ -3,7 +3,7 @@
 #include"src/renderer.h"
 int main()
 {
-    Window window("Game", 800, 600);
+    Window window("Colorful Turning Triangle", 800, 600);
     Shader shader;
     window.init();
     Renderer renderer;
