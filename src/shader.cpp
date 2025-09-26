@@ -56,9 +56,10 @@ void Shader::use()
     transform = glm::rotate(transform, (float)glfwGetTime()*2, glm::vec3(0.0f, 0.0f, 1.0f));
 
     glUseProgram(Program_ID);
+
     int transformLoc = glGetUniformLocation(Program_ID, "transform");
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
-
+    
     int vertexColorLocation = glGetUniformLocation(Program_ID, "ourColor");
     glUniform4f(vertexColorLocation, 1.0f, (rand()%360)*glfwGetTime(), 0.0f, 1.0f);
 }
