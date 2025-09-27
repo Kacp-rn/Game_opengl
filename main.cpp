@@ -4,8 +4,8 @@
 #include"src/texture.h"
 int main()
 {
-    // Texture texture;
-    // texture.is_exist();
+    Texture texture("src/assets/wood.jpg");
+    
     
     Window window("Colorful Turning Triangle", 800, 600);
     Shader shader;
