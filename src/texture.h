@@ -11,14 +11,21 @@
 class Texture
 {
     private:   
-    unsigned int EBO;
-    unsigned int texture;
+   // unsigned int EBO;
+    GLuint texture;
     unsigned char *data;
     std::string texture_path;
     int width;
     int height;
     int nrChannels;
+
     public:
-    Texture(std::string path);
+    bool data_setup();
+    void pre_texture_setup();
+    void EBO_setup();
+    void bind_texture();
+    public:
+    void s_Texture(std::string path);
+    void main_loop();
     ~Texture();
 };

@@ -4,10 +4,10 @@
 #include"src/texture.h"
 int main()
 {
-    Texture texture("src/assets/wood.jpg");
     
     
-    Window window("Colorful Turning Triangle", 800, 600);
+    
+    Window window("Color Turning Triangle", 800, 600);
     Shader shader;
     window.init();
     Renderer renderer;
