@@ -21,6 +21,7 @@ class Window
     bool ShouldClose();
     void swapBuffers();
     void update();
+    
     int getWidth(){return width;}
     int getHeight(){return height;}
     GLFWwindow* getGLFWWindow(){return window;}

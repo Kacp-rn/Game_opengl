@@ -57,12 +57,15 @@ void Window::swapBuffers()
 
 bool Window::ShouldClose()
 {
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    glfwSetWindowShouldClose(window, true);
     return glfwWindowShouldClose(window);
 }
 
 void Window::pollEvents()
 {
     glfwPollEvents();
+    
 }
 
 void Window::update()
