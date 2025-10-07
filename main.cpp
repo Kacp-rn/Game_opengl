@@ -4,9 +4,6 @@
 #include"src/texture.h"
 int main()
 {
-    
-    
-    
     Window window("Color Turning Triangle", 800, 600);
     Shader shader;
     window.init();
